@@ -1,0 +1,114 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block content %}
+<div class="search">
+  <select id="category-filter">
+    <option value="all">Все категории</option>
+    <option value="new">Новинки</option>
+    <option value="popular">Популярные</option>
+    <option value="Beggar">Бюджетные</option>
+  </select>
+  <input type="text" id="name-filter" placeholder="Введите название товара">
+</div>
+<div class="container">
+  <div class="katalog">
+    <h2 class="title">Новинки</h2>
+    <div class="katalog__blocks">
+      <div class="katalog__blocks__tovar" data-category="new" data-name="TAG HEUER WAW2041.FC6288">
+        <img src="{% static 'img/black.png'%}" alt="">
+        <p>TAG HEUER WAW2041.FC6288</p>
+        <section>15 158 600 РУБ.</section>
+      </div>
+      <div class="katalog__blocks__tovar" data-category="new" data-name="HAMILTON H24525331">
+        <img src="{% static 'img/gold.png'%}" alt="">
+        <p>HAMILTON H24525331</p>
+        <section>281 000 РУБ.</section>
+      </div>
+      <div class="katalog__blocks__tovar" data-category="new" data-name="TAG HEUER WBN2111.FC6505">
+        <img src="{% static 'img/serebro.png'%}" alt="">
+        <p>TAG HEUER WBN2111.FC6505</p>
+        <section>389 800РУБ.</section>
+      </div>
+    </div>
+
+
+    <h2 class="title">Популярные</h2>
+    <div class="katalog__blocks">
+      <div class="katalog__blocks__tovar" data-category="popular" data-name="TAG HEUER WAW2041.FC6288">
+        <img src="{% static 'img/serebro.png'%}" alt="">
+        <p>TAG HEUER WAW2041.FC6288</p>
+        <section>15 158 600 РУБ.</section>
+      </div>
+      <div class="katalog__blocks__tovar" data-category="popular" data-name="HAMILTON H24525331">
+        <img src="{% static 'img/gold.png'%}" alt="">
+        <p>HAMILTON H24525331</p>
+        <section>281 000 РУБ.</section>
+      </div>
+      <div class="katalog__blocks__tovar" data-category="popular" data-name="TAG HEUER WBN2111.FC6505">
+        <img src="{% static 'img/black.png'%}" alt="">
+        <p>TAG HEUER WBN2111.FC6505</p>
+        <section>389 800РУБ.</section>
+      </div>
+    </div>
+
+
+    <h2 class="title">Бюджетные</h2>
+    <div class="katalog__blocks">
+      <div class="katalog__blocks__tovar" data-category="Beggar" data-name="TAG HEUER WAW2041.FC6288">
+        <img src="{% static 'img/black.png'%}" alt="">
+        <p>TAG HEUER WAW2041.FC6288</p>
+        <section>15 158 600 РУБ.</section>
+      </div>
+      <div class="katalog__blocks__tovar" data-category="Beggar" data-name="HAMILTON H24525331">
+        <img src="{% static 'img/gold.png'%}" alt="">
+        <p>HAMILTON H24525331</p>
+        <section>281 000 РУБ.</section>
+      </div>
+      <div class="katalog__blocks__tovar" data-category="Beggar" data-name="Chanell WBN2111.FC6505">
+        <img src="{% static 'img/serebro.png'%}" alt="">
+        <p>Chanell WBN2111.FC6505</p>
+        <section>389 800РУБ.</section>
+      </div>
+    </div>
+  </div>
+</div>  
+<script>  
+  document.getElementById('category-filter').addEventListener('change', function () {
+    var selectedCategory = this.value;
+    var product = document.querySelectorAll('.katalog__blocks__tovar');
+
+    product.forEach(function (katalog__blocks__tovar) {
+      if (selectedCategory === 'all' || katalog__blocks__tovar.getAttribute('data-category') === selectedCategory) {
+        katalog__blocks__tovar.style.display = 'block';
+      } else {
+        katalog__blocks__tovar.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+<script>
+  document.getElementById('category-filter').addEventListener('change', filterproduct);
+  document.getElementById('name-filter').addEventListener('input', filterproduct);
+
+  function filterproduct() {
+    var selectedCategory = document.getElementById('category-filter').value;
+    var nameFilter = document.getElementById('name-filter').value.toLowerCase();
+    var product = document.querySelectorAll('.katalog__blocks__tovar');
+
+    product.forEach(function (katalog__blocks__tovar) {
+      var category = katalog__blocks__tovar.getAttribute('data-category');
+      var name = katalog__blocks__tovar.getAttribute('data-name').toLowerCase();
+
+      var categoryMatch = selectedCategory === 'all' || category === selectedCategory;
+      var nameMatch = name.includes(nameFilter);
+
+      if (categoryMatch && nameMatch) {
+        katalog__blocks__tovar.style.display = 'block';
+      } else {
+        katalog__blocks__tovar.style.display = 'none';
+      }
+    });
+  }
+</script>
+{% endblock %}
