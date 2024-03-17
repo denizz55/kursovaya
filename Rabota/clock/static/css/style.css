@@ -159,3 +159,7 @@ width: 100%;
   width: 1437px;
   height: 1279px;
 }
+
+form[action="/accounts/login/"]{
+
+}
