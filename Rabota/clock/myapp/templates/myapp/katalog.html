@@ -14,62 +14,22 @@
   <div class="katalog">
     <h2 class="title">Новинки</h2>
     <div class="katalog__blocks">
-      <div class="katalog__blocks__tovar" data-category="new" data-name="TAG HEUER WAW2041.FC6288">
-        <img src="{% static 'img/black.png'%}" alt="">
-        <p>TAG HEUER WAW2041.FC6288</p>
-        <section>15 158 600 РУБ.</section>
-      </div>
-      <div class="katalog__blocks__tovar" data-category="new" data-name="HAMILTON H24525331">
-        <img src="{% static 'img/gold.png'%}" alt="">
-        <p>HAMILTON H24525331</p>
-        <section>281 000 РУБ.</section>
-      </div>
-      <div class="katalog__blocks__tovar" data-category="new" data-name="TAG HEUER WBN2111.FC6505">
-        <img src="{% static 'img/serebro.png'%}" alt="">
-        <p>TAG HEUER WBN2111.FC6505</p>
-        <section>389 800РУБ.</section>
-      </div>
-    </div>
 
-
-    <h2 class="title">Популярные</h2>
-    <div class="katalog__blocks">
-      <div class="katalog__blocks__tovar" data-category="popular" data-name="TAG HEUER WAW2041.FC6288">
-        <img src="{% static 'img/serebro.png'%}" alt="">
-        <p>TAG HEUER WAW2041.FC6288</p>
-        <section>15 158 600 РУБ.</section>
+      {% if clock %}
+      {% for el in clock %}
+      <div class="katalog__blocks__tovar" data-category="{{el.category}}" data-name="{{el.name}}">
+        <img src="{{el.photo_url}}" alt="">
+        <p>{{el.name}}</p>
+        <section>{{el.price}} РУБ.</section>
+        <a href="{% url 'post_detail' el.id %}"> <button>Показать подробности</button></a>
+       
       </div>
-      <div class="katalog__blocks__tovar" data-category="popular" data-name="HAMILTON H24525331">
-        <img src="{% static 'img/gold.png'%}" alt="">
-        <p>HAMILTON H24525331</p>
-        <section>281 000 РУБ.</section>
+      {% endfor %}
+      {% else %}
+      <div class="container">
+        <p class="not_found_notes">Нет записей</p>
       </div>
-      <div class="katalog__blocks__tovar" data-category="popular" data-name="TAG HEUER WBN2111.FC6505">
-        <img src="{% static 'img/black.png'%}" alt="">
-        <p>TAG HEUER WBN2111.FC6505</p>
-        <section>389 800РУБ.</section>
-      </div>
-    </div>
-
-
-    <h2 class="title">Бюджетные</h2>
-    <div class="katalog__blocks">
-      <div class="katalog__blocks__tovar" data-category="Beggar" data-name="TAG HEUER WAW2041.FC6288">
-        <img src="{% static 'img/black.png'%}" alt="">
-        <p>TAG HEUER WAW2041.FC6288</p>
-        <section>15 158 600 РУБ.</section>
-      </div>
-      <div class="katalog__blocks__tovar" data-category="Beggar" data-name="HAMILTON H24525331">
-        <img src="{% static 'img/gold.png'%}" alt="">
-        <p>HAMILTON H24525331</p>
-        <section>281 000 РУБ.</section>
-      </div>
-      <div class="katalog__blocks__tovar" data-category="Beggar" data-name="Chanell WBN2111.FC6505">
-        <img src="{% static 'img/serebro.png'%}" alt="">
-        <p>Chanell WBN2111.FC6505</p>
-        <section>389 800РУБ.</section>
-      </div>
-    </div>
+      {% endif %}
   </div>
 </div>  
 <script>  

@@ -1,16 +1,20 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.detail import DetailView
 
+from .models import Clock
+
 def news(request):
-    return render(request, 'myapp/news.html')
+    
+    return render(request, 'myapp/news.html', )
 
 def registration(request):
     return render(request, 'myapp/registration.html')
 
 def katalog(request):
-    return render(request, 'myapp/katalog.html')
+    clock = Clock.objects.all()
+    return render(request, 'myapp/katalog.html', {'clock': clock})
 
 def authorization(request):
     return render(request, 'myapp/authorization.html')
@@ -38,4 +42,10 @@ def register_view(request):
         form = UserCreationForm()
     return render(request, 'register.html', {'form': form})
 
+
+def post_detail(request, pk):
+    Ck = get_object_or_404(Clock, id=pk)
+    return render(request, 'myapp/product.html', {
+        "Ck":Ck,
+ })
 

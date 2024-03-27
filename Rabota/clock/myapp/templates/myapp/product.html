@@ -1,0 +1,24 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<div class="container">
+  <div class="events">
+    <div class="events__wrapper">
+      <div class="events__photo">
+        <img src="{{Ck.photo_url}}" alt="">
+      </div>
+      <div class="events__info">
+        <p class="events__data">{{Ck.date}}</p>
+        <p class="events__title">{{Ck.name}}</p>
+        <p class="events__comm">{{Ck.description}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

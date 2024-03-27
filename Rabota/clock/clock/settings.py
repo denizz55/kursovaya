@@ -139,3 +139,6 @@ ACCOUNT_USERNAME_MIN_LENGTH = 4
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 SITE_ID = 1
+MEDIA_DIR = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = MEDIA_DIR
+MEDIA_URL = '/media/'
