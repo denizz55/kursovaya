@@ -21,7 +21,7 @@
         <img src="{{el.photo_url}}" alt="">
         <p>{{el.name}}</p>
         <section>{{el.price}} РУБ.</section>
-        <a href="{% url 'post_detail' el.id %}"> <button>Показать подробности</button></a>
+        <a href="{% url 'post_detail' el.id %}"> <button class="detail__info">Показать подробности</button></a>
        
       </div>
       {% endfor %}

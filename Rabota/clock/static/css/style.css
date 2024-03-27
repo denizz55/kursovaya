@@ -163,3 +163,65 @@ width: 100%;
 form[action="/accounts/login/"]{
 
 }
+
+.events__info{
+  font-size: 40px;
+}
+
+.events__wrapper{
+  display: flex;
+}
+
+.events__photo img{
+  width: 300px;
+}
+.buy{
+  margin-top: 70px;
+  width: 300px;
+  height: 100px;
+  color: black;
+  background-color: white;
+}
+
+.katalog__blocks img{
+  width: 300px;
+}
+
+.detail__info{
+  width: 250px;
+  background-color: white;
+  color: black;
+  border-radius: 100px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.katalog__blocks__tovar section{
+  margin-top: 10px;
+}
+
+.katalog__blocks__tovar{
+  border: 1px black solid;
+  border-radius: 10px;
+}
+
+.title{
+  font-size: 48px;
+}
+
+#category-filter{
+  width: 300px;
+  font-size: 24px;
+}
+
+#name-filter{
+  width: 300px;
+  font-size: 24px;
+}
+.search{
+  margin-top: 30px;
+  text-align: left;
+  padding-left: 200px;
+  padding-bottom: 50px;
+}
